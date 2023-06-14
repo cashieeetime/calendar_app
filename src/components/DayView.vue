@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
     <v-row>
       <v-col>
@@ -27,3 +28,9 @@
       </v-col>
     </v-row>
   </template>
+
+<script>
+  export default {
+    data: () => ({}),
+  }
+</script>

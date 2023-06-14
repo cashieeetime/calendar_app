@@ -38,19 +38,19 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <DayView/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import DayView from './components/DayView';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    DayView,
   },
 
   data: () => ({
