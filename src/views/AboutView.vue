@@ -1,5 +1,17 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div>
+    <calendar-demo/>
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import CalendarDemo from '@/components/CalendarDemo.vue'
+
+export default {
+  name: 'AboutView',
+  components: {
+    CalendarDemo
+  }
+}
+</script>
