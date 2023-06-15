@@ -66,7 +66,7 @@
 
 <script>
   export default {
-    name: 'CalendarDemo',
+    name: 'FullCalendar',
     data: () => ({
       type: 'month',
       types: ['month', 'week', 'day', '4day'],

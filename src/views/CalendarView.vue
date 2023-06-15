@@ -1,17 +1,17 @@
 <template>
   <div>
-    <calendar-demo/>
+    <full-calendar/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import CalendarDemo from '@/components/CalendarDemo.vue'
+import FullCalendar from '@/components/FullCalendar.vue'
 
 export default {
-  name: 'AboutView',
+  name: 'CalendarView',
   components: {
-    CalendarDemo
+    FullCalendar
   }
 }
 </script>
