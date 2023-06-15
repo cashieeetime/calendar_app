@@ -4,7 +4,7 @@
         <v-main>
             <nav>
                 <router-link to="/dashboard">Dashboard</router-link> |
-                <router-link to="/about">Calendar</router-link>
+                <router-link to="/calendar">Calendar</router-link>
             </nav>
             <router-view/>
         </v-main>
