@@ -1,10 +1,14 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+  <div id="calendar_demo">
+    <v-app>
+        <v-main>
+            <nav>
+                <router-link to="/">Dashboard</router-link> |
+                <router-link to="/about">Calendar</router-link>
+            </nav>
+            <router-view/>
+        </v-main>
+    </v-app>
   </div>
 </template>
 
