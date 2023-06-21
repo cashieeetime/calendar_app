@@ -1,42 +1,39 @@
 <template>
     <v-card
-      height="400"
-      width="256"
-      class="mx-auto"
+    class="pa-12"
+    color="indigo darken-2"
+    height="1000"
+    flat
     >
-      <v-navigation-drawer permanent>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title class="text-h6">
-              Application
-            </v-list-item-title>
-            <v-list-item-subtitle>
-              subtext
-            </v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-  
-        <v-divider></v-divider>
-  
-        <v-list
-          dense
-          nav
+        <v-card
+            elevation="12"
+            width="75"
         >
-          <v-list-item
-            v-for="item in items"
-            :key="item.title"
-            link
-          >
-            <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-icon>
-  
-            <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-      </v-navigation-drawer>
+            <v-navigation-drawer
+            floating
+            :mini-variant.sync="mini"
+            permanent
+            >
+                <v-list
+                    dense
+                    rounded
+                >
+                    <v-list-item
+                        v-for="item in items"
+                        :key="item.title"
+                        link
+                        >
+                        <v-list-item-icon>
+                            <v-icon>{{ item.icon }}</v-icon>
+                        </v-list-item-icon>
+
+                        <v-list-item-content>
+                            <v-list-item-title>{{ item.title }}</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list>
+            </v-navigation-drawer>
+        </v-card>
     </v-card>
 </template>
 
@@ -44,12 +41,13 @@
   export default {
     data () {
       return {
+        drawer: true,
         items: [
-          { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-          { title: 'Photos', icon: 'mdi-image' },
-          { title: 'About', icon: 'mdi-help-box' },
+          { title: 'Home', icon: 'mdi-home-city', link: "@/views/Dashboard.vue" },
+          { title: 'My Account', icon: 'mdi-account' },
+          { title: 'Users', icon: 'mdi-account-group-outline' },
         ],
-        right: null,
+        mini: true,
       }
     },
   }
