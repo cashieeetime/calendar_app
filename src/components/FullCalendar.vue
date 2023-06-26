@@ -121,6 +121,7 @@
               <v-btn icon>
                 <v-icon>mdi-pencil</v-icon>
               </v-btn>
+              <!-- TITILE GOES HERE -->
               <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
               <v-spacer></v-spacer>
               <v-btn icon>
@@ -132,6 +133,119 @@
             </v-toolbar>
             <v-card-text>
               <span v-html="selectedEvent.details"></span>
+                <div> <!-- ADD TEXT FIELD HERE -->
+                <v-col
+                cols="10"
+                sm="5"
+                md="12"
+                >
+                  <v-text-field
+                    label="Title"
+                    standard
+                    clearable
+                    clear-icon="mdi-close-circle"
+                  ></v-text-field>
+
+        
+                  <v-row>
+                  <v-menu
+                  ref="menu"
+                  v-model="menu"
+                  :close-on-content-click="false"
+                  :return-value.sync="date"
+                  transition="scale-transition"
+                  offset-y
+                  min-width="auto"
+                  >
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            v-model="date"
+            label="Start Date"
+            prepend-icon="mdi-calendar"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-date-picker
+          v-model="date"
+          no-title
+          scrollable
+        >
+          <v-spacer></v-spacer>
+          <v-btn
+            text
+            color="primary"
+            @click="menu = false"
+          >
+            Cancel
+          </v-btn>
+          <v-btn
+            text
+            color="primary"
+            @click="$refs.menu.save(date)"
+          >
+            OK
+          </v-btn>
+        </v-date-picker>
+      </v-menu>
+
+      <v-menu
+                  ref="menu"
+                  v-model="menu"
+                  :close-on-content-click="false"
+                  :return-value.sync="date"
+                  transition="scale-transition"
+                  offset-y
+                  min-width="auto"
+                  >
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            v-model="date"
+            label="Start Date"
+            prepend-icon="mdi-calendar"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-date-picker
+          v-model="date"
+          no-title
+          scrollable
+        >
+          <v-spacer></v-spacer>
+          <v-btn
+            text
+            color="primary"
+            @click="menu = false"
+          >
+            Cancel
+          </v-btn>
+          <v-btn
+            text
+            color="primary"
+            @click="$refs.menu.save(date)"
+          >
+            OK
+          </v-btn>
+        </v-date-picker>
+      </v-menu>
+      </v-row>
+                  
+
+                  <v-textarea
+                    name="input-7-4"
+                    label="Description"
+                    clearable
+                    clear-icon="mdi-close-circle"
+                    auto-grow
+                  ></v-textarea>
+
+                </v-col>
+              </div>
+
+
             </v-card-text>
             <v-card-actions>
               <v-btn
@@ -140,6 +254,13 @@
                 @click="selectedOpen = false"
               >
                 Cancel
+              </v-btn>
+              <v-btn
+                text
+                color="primary"
+                @click="$refs.menu.save(date)"
+              >
+                OK
               </v-btn>
             </v-card-actions>
           </v-card>

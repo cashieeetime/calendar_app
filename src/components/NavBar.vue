@@ -1,39 +1,47 @@
 <template>
     <v-card
-    class="pa-12"
-    color="indigo darken-2"
-    height="1000"
-    flat
+      height="400"
+      width="256"
+      class="mx-auto"
     >
-        <v-card
-            elevation="12"
-            width="75"
+      <v-navigation-drawer permanent>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title class="text-h6">
+              Application
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              subtext
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+  
+        <v-divider></v-divider>
+  
+        <v-list
+          dense
+          nav
         >
-            <v-navigation-drawer
-            floating
-            :mini-variant.sync="mini"
-            permanent
-            >
-                <v-list
-                    dense
-                    rounded
-                >
-                    <v-list-item
-                        v-for="item in items"
-                        :key="item.title"
-                        link
-                        >
-                        <v-list-item-icon>
-                            <v-icon>{{ item.icon }}</v-icon>
-                        </v-list-item-icon>
+          <v-list-item
+            v-for="item in items"
+            :key="item.title"
+            link
+          >
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+  
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
 
-                        <v-list-item-content>
-                            <v-list-item-title>{{ item.title }}</v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-                </v-list>
-            </v-navigation-drawer>
-        </v-card>
+            <v-list-item-content>
+              <v-list-item-action>{{ item.link }}</v-list-item-action>
+            </v-list-item-content>
+
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
     </v-card>
 </template>
 
@@ -41,13 +49,12 @@
   export default {
     data () {
       return {
-        drawer: true,
         items: [
-          { title: 'Home', icon: 'mdi-home-city', link: "@/views/Dashboard.vue" },
-          { title: 'My Account', icon: 'mdi-account' },
-          { title: 'Users', icon: 'mdi-account-group-outline' },
+          { title: 'Dashboard', icon: 'mdi-view-dashboard'},
+          { title: 'Calendar', icon: 'mdi-image'},
+          // { title: 'About', icon: 'mdi-help-box' },
         ],
-        mini: true,
+        right: null,
       }
     },
   }

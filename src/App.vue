@@ -2,15 +2,28 @@
   <div id="calendar_demo">
     <v-app>
         <v-main>
-            <nav>
+            <nav-bar>
                 <router-link to="/dashboard">Dashboard</router-link> |
                 <router-link to="/calendar">Calendar</router-link>
-            </nav>
+            </nav-bar>
             <router-view/>
         </v-main>
     </v-app>
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import NavBar from '@/components/NavBar.vue'
+
+export default {
+  name: 'App',
+  components: {
+    NavBar
+  }
+}
+</script>
+
 
 <style lang="scss">
 #app {
@@ -32,5 +45,9 @@ nav {
       color: #42b983;
     }
   }
+}
+
+.navbar {
+  position: left;
 }
 </style>
