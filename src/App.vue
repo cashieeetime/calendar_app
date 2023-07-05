@@ -3,7 +3,7 @@
     <v-app>
         <v-main>
             <nav-bar>
-                <router-link to="/dashboard">Dashboard</router-link> |
+                <router-link to="/dashboard">Dashboard</router-link>
                 <router-link to="/calendar">Calendar</router-link>
             </nav-bar>
             <router-view/>
