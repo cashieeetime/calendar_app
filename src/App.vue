@@ -2,10 +2,12 @@
   <div id="calendar_demo">
     <v-app>
         <v-main>
+            <!-- 
             <nav-bar>
                 <router-link to="/dashboard">Dashboard</router-link>
                 <router-link to="/calendar">Calendar</router-link>
             </nav-bar>
+            -->
             <router-view/>
         </v-main>
     </v-app>
@@ -19,7 +21,7 @@ import NavBar from '@/components/NavBar.vue'
 export default {
   name: 'App',
   components: {
-    NavBar
+    // NavBar
   }
 }
 </script>
