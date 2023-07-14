@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/dashboard',
+    path: '/',
     name: 'dashboard',
     component: DashboardView
   },
