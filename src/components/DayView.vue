@@ -1,4 +1,3 @@
-/* eslint-disable */
 <template>
   <v-container>
     <v-row>
