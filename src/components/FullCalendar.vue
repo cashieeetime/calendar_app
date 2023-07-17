@@ -123,7 +123,7 @@
               </v-btn>
 
               <!-- TITILE GOES HERE -->
-              <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
+              <v-toolbar-title v-html="selectedEvent.name">   </v-toolbar-title>
               <v-spacer></v-spacer>
               <v-btn icon>
                 <v-icon>mdi-heart</v-icon>
@@ -373,14 +373,14 @@
       createEvent: null,
       createStart: null,
       extendOriginal: null,
-      title: "",
       StartDateMenu: false,
-      StartDate: false,
       StartTimeMenu: false,
-      StartTime: null,
       EndDateMenu: false,
-      EndDate: false,
       EndTimeMenu: false,
+      title: "",
+      StartDate: null,
+      StartTime: null,
+      EndDate: null,
       EndTime: null,
       description: "",
     }),
