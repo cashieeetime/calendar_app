@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col>
-        <v-sheet height="400">
+        <v-sheet height="650">
           <v-calendar
             color="primary"
             type="day"
