@@ -1,5 +1,9 @@
 <template>
-    <div class="home">
+    <v-card
+        color="grey lighten-4"
+        min-width="350px"
+        flat
+    >
         <v-col
         cols="10"
         sm="5"
@@ -191,7 +195,7 @@
             v-model="description"
             ></v-textarea>
         </v-col>
-    </div>
+    </v-card>
 </template>
   
 <script>
