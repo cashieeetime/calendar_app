@@ -1,5 +1,6 @@
 /* eslint-disable */
 <template>
+  <v-container>
     <v-row>
       <v-col>
         <v-sheet height="400">
@@ -27,7 +28,8 @@
         </v-sheet>
       </v-col>
     </v-row>
-  </template>
+  </v-container>
+</template>
 
 <script>
   export default {
