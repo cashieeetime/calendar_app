@@ -1,6 +1,10 @@
 <template>
-  <div>
-    <full-calendar/>
+  <div class="d-flex justify-center">
+    <v-card width="1200">
+      <v-container>
+        <full-calendar/>
+      </v-container>
+    </v-card>
   </div>
 </template>
 

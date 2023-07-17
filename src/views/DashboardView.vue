@@ -1,27 +1,43 @@
 <template>
-  <div class="d-flex flex-row justify-space-around">
-    <v-container max-width="500">
-      <to-do-list/>
-    </v-container>
+  <div>
+    <div class="d-flex justify-space-around">
+      <v-card width="500" height="700">
+        <v-container>
+          <to-do-list/>
+        </v-container>
+      </v-card>
 
-    <v-container>
-      <day-view/>
-    </v-container>
+      <v-card width="950" height="700">
+        <v-container>
+          <day-view/>
+        </v-container>
+      </v-card>
+    </div>
+
+    <!--
+    <div class="d-flex justify-space-around">
+      <v-card width="1300" height="700">
+        <v-container>
+          <compare-schedule/>
+        </v-container>
+      </v-card>
+    </div>
+    -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-// import CompareSchedule from '@/components/CompareSchedule.vue'
 import ToDoList from '@/components/ToDoList.vue'
 import DayView from '@/components/DayView.vue'
+// import CompareSchedule from '@/components/CompareSchedule.vue'
 
 export default {
   name: 'DashboardView',
   components: {
-    // CompareSchedule,
     ToDoList,
-    DayView
+    DayView,
+    // CompareSchedule
   }
 }
 </script>
