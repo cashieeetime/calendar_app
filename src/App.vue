@@ -1,15 +1,21 @@
 <template>
   <div id="calendar_demo">
     <v-app>
-        <v-main>
-            <!-- 
-            <nav-bar>
-                <router-link to="/dashboard">Dashboard</router-link>
-                <router-link to="/calendar">Calendar</router-link>
-            </nav-bar>
-            -->
-            <router-view/>
-        </v-main>
+      <v-main>
+        <nav>
+          <router-link to="/">Dashboard</router-link> | 
+          <router-link to="/calendar">Calendar</router-link> | 
+          <router-link to="/testing">Testing</router-link>
+        </nav>
+        <router-view/>
+
+        <!-- 
+        <nav-bar>
+            <router-link to="/dashboard">Dashboard</router-link>
+            <router-link to="/calendar">Calendar</router-link>
+        </nav-bar>
+        -->
+      </v-main>
     </v-app>
   </div>
 </template>
