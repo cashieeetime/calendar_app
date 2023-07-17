@@ -31,7 +31,6 @@
 
     <v-row
       class="my-1"
-      align="center"
     >
       <strong class="mx-4 info--text text--darken-2">
         Remaining: {{ remainingTasks }}
