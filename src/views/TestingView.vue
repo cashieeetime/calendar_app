@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!--
         <div class="d-flex flex-column justify-center">
             <v-container>
                 <v-card>
@@ -7,17 +8,26 @@
                 </v-card>
             </v-container>
         </div>
+        -->
 
-        <!--
-        <div class="d-flex flex-column mb-6">
+        
+        <div class="d-flex justify-center">
             <v-container>
                 <event-card/>
             </v-container>
-            
+        </div>
+        
+        
+        <!--
+        <div class="d-flex justify-center">
             <v-container>
                 <drag-drop-calendar/>
             </v-container>
-            
+        </div>
+        -->
+        
+        <!--
+        <div class="d-flex justify-center">    
             <v-container>
                 <nav-bar/>
             </v-container>
@@ -29,18 +39,18 @@
 <script>
 // @ is an alias to /src
 
-// import EventCard from '@/components/EventCard.vue'
+import EventCard from '@/components/EventCard.vue'
 // import DragDropCalendar from '@/components/DragDropCalendar.vue'
 // import NavBar from '@/components/NavBar.vue'
-import FullCalendar from '@/components/FullCalendar.vue'
+// import FullCalendar from '@/components/FullCalendar.vue'
 
 export default {
 name: 'DashboardView',
 components: {
-    // EventCard,
+    EventCard,
     // DragDropCalendar,
     // NavBar,
-    FullCalendar
+    // FullCalendar
     }}
 </script>
   

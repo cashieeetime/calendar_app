@@ -28,7 +28,6 @@
             >
                 <template v-slot:activator="{ on, attrs }">
                     <v-text-field
-                    v-model="startdate"
                     label="Start Date"
                     prepend-icon="mdi-calendar"
                     readonly
@@ -37,7 +36,7 @@
                     ></v-text-field>
                 </template>
                 <v-date-picker
-                    v-model="selectStartDate"
+                    v-model="startdate"
                     no-title
                     scrollable
                 >
@@ -71,7 +70,6 @@
             >
                 <template v-slot:activator="{ on, attrs }">
                     <v-text-field
-                        v-model="StartTime"
                         label="Start Time"
                         prepend-icon="mdi-clock-time-four-outline"
                         readonly
@@ -82,7 +80,7 @@
                 <v-time-picker
                     ampm-in-title
                     format="ampm"
-                    v-model="SelectStartTime"
+                    v-model="starttime"
                 >
                     <v-spacer></v-spacer>
                     <v-btn
@@ -112,7 +110,6 @@
             >
                 <template v-slot:activator="{ on, attrs }">
                     <v-text-field
-                    v-model="enddate"
                     label="End Date"
                     prepend-icon="mdi-calendar"
                     readonly
@@ -121,7 +118,7 @@
                     ></v-text-field>
                 </template>
                 <v-date-picker
-                    v-model="selectEndDate"
+                    v-model="enddate"
                     no-title
                     scrollable
                 >
@@ -155,7 +152,6 @@
             >
                 <template v-slot:activator="{ on, attrs }">
                     <v-text-field
-                        v-model="endtime"
                         label="End Time"
                         prepend-icon="mdi-clock-time-four-outline"
                         readonly
@@ -166,7 +162,7 @@
                 <v-time-picker
                     ampm-in-title
                     format="ampm"
-                    v-model="SelectEndTime"
+                    v-model="endtime"
                 >
                     <v-spacer></v-spacer>
                     <v-btn
@@ -203,19 +199,21 @@
     name: 'DashboardView',
     data() {
         return {
-          title: "",
           StartDateMenu: false,
-          startdate: null,
-          selectStartDate: false,
           StartTimeMenu: false,
-          StartTime: null,
-          SelectStartTime: null,
           EndDateMenu: false,
-          enddate: null,
-          selectEndDate: false,
           EndTimeMenu: false,
-          endtime: null,
-          SelectEndTime: null,
-          description: "",
+
+          eventData: [
+            {
+              startdate: null,
+              starttime: null,
+              enddate: null,
+              endtime: null,
+              title: "",
+              description: "",
+            }
+          ],
+          
         }}}
 </script>
