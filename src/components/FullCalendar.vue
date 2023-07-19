@@ -123,7 +123,16 @@
               </v-btn>
 
               <!-- TITILE GOES HERE -->
-              <v-toolbar-title v-html="selectedEvent.name">   </v-toolbar-title>
+              <v-toolbar-title> 
+                <v-text-field
+                  label="Title"
+                  standard
+                  clearable
+                  clear-icon="mdi-close-circle"
+                  v-model="title"
+                  @click="label = title"
+                  ></v-text-field>
+              </v-toolbar-title>
               <v-spacer></v-spacer>
               <v-btn icon>
                 <v-icon>mdi-heart</v-icon>
@@ -140,13 +149,6 @@
                 sm="5"
                 md="12"
                 >
-                  <v-text-field
-                  label="Title"
-                  standard
-                  clearable
-                  clear-icon="mdi-close-circle"
-                  v-model="title"
-                  ></v-text-field>
                   <v-row>
                   <v-menu
                   ref="menu"
