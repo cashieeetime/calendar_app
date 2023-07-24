@@ -118,9 +118,6 @@
                 :color="selectedEvent.color"
                 dark
               >
-                <v-btn icon>
-                  <v-icon>mdi-pencil</v-icon>
-                </v-btn>
   
                 <!-- TITILE GOES HERE -->
                 <v-toolbar-title> 
@@ -135,8 +132,13 @@
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn icon>
+                  <v-icon>mdi-pencil</v-icon>
+                </v-btn>
+                <!--
+                <v-btn icon>
                   <v-icon>mdi-heart</v-icon>
                 </v-btn>
+                -->
                 <v-btn icon>
                   <v-icon>mdi-dots-vertical</v-icon>
                 </v-btn>
