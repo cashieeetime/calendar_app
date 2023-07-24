@@ -356,7 +356,7 @@
     export default {
       data: () => ({
         focus: '',
-        type: 'month',
+        type: 'week',
         typeToLabel: {
           month: 'Month',
           week: 'Week',
@@ -369,7 +369,7 @@
         value: '',
         events: [],
         colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
-        // names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
+        names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
         dragEvent: null,
         dragStart: null,
         createEvent: null,
@@ -379,6 +379,7 @@
         StartTimeMenu: false,
         EndDateMenu: false,
         EndTimeMenu: false,
+
         title: "",
         StartDate: null,
         StartTime: null,
@@ -398,31 +399,24 @@
           }
         },
         startTime (tms) {
-          const mouse = this.toTime(tms)
-  
-          if (this.dragEvent && this.dragTime === null) {
+            const mouse = this.toTime(tms)
+
+            if (this.dragEvent && this.dragTime === null) {
             const start = this.dragEvent.start
-  
+
             this.dragTime = mouse - start
-          } else {
+            } else {
             this.createStart = this.roundTime(mouse)
             this.createEvent = {
-              // name: `Event #${this.events.length}`,
-              color: this.rndElement(this.colors),
-              start: this.createStart,
-              end: this.createStart,
-              timed: true,
-
-              title: "",
-              StartDate: null,
-              StartTime: null,
-              EndDate: null,
-              EndTime: null,
-              description: ""
+                name: `Event #${this.events.length}`,
+                color: this.rndElement(this.colors),
+                start: this.createStart,
+                end: this.createStart,
+                timed: true,
             }
-  
+
             this.events.push(this.createEvent)
-          }
+            }
         },
         extendBottom (event) {
           this.createEvent = event
@@ -518,7 +512,7 @@
             const end = start + secondTimestamp
   
             events.push({
-              // name: this.rndElement(this.names),
+              name: this.rndElement(this.names),
               color: this.rndElement(this.colors),
               start,
               end,
@@ -560,7 +554,7 @@
             const second = new Date(first.getTime() + secondTimestamp)
   
             events.push({
-              // name: this.names[this.rnd(0, this.names.length - 1)],
+              name: this.names[this.rnd(0, this.names.length - 1)],
               start: first,
               end: second,
               color: this.colors[this.rnd(0, this.colors.length - 1)],
