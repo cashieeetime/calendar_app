@@ -358,7 +358,7 @@
     export default {
       data: () => ({
         focus: '',
-        type: 'week',
+        type: '4day',
         typeToLabel: {
           month: 'Month',
           week: 'Week',
@@ -566,6 +566,7 @@
   
           this.events = events
         },
+        
         rnd (a, b) {
           return Math.floor((b - a + 1) * Math.random()) + a
         },
