@@ -101,6 +101,7 @@
   export default {
     data: () => ({
       tasks: [
+        /*
         {
           done: false,
           text: 'Foobar',
@@ -109,6 +110,7 @@
           done: false,
           text: 'Fizzbuzz',
         },
+        */
       ],
       newTask: null,
     }),
