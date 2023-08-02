@@ -30,20 +30,28 @@
     <v-divider class="mt-4"></v-divider>
 
     <v-row
-      class="my-1"
+      class="my-1"      
     >
-      <strong class="mx-4 info--text text--darken-2">
-        Remaining: {{ remainingTasks }}
-      </strong>
-
-      <v-divider vertical></v-divider>
-
-      <strong class="mx-4 success--text text--darken-2">
-        Completed: {{ completedTasks }}
+      <strong class="mx-4 text--darken-2">
+        To Do: {{ remainingTasks }}
       </strong>
 
       <v-spacer></v-spacer>
-
+      <v-divider vertical></v-divider>
+      
+      <strong class="mx-4 info--text text--darken-2">
+        In Progress: {{ inprogress }}
+      </strong>
+      
+      <v-spacer></v-spacer>
+      <v-divider vertical></v-divider>
+      
+      <strong class="mx-4 success--text text--darken-2">
+        Completed: {{ completedTasks }}
+      </strong>
+      
+      <v-spacer></v-spacer>
+      
       <v-progress-circular
         :value="progress"
         class="mr-2"
@@ -66,30 +74,75 @@
 
           <v-list-item :key="`${i}-${task.text}`">
             <v-list-item-action>
-              <v-checkbox
-                v-model="task.done"
-                :color="task.done && 'grey' || 'primary'"
-              >
-                <template v-slot:label>
-                  <div
-                    :class="task.done && 'grey--text' || 'primary--text'"
-                    class="ml-4"
-                    v-text="task.text"
-                  ></div>
-                </template>
-              </v-checkbox>
+              <template>
+                <div class="text-center"> 
+                  <v-menu
+                  bottom
+                  :offset-y="offset"
+                  color="white"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn
+                        v-bind="attrs"
+                        v-on="on"
+                        color="primary"
+                        dark
+                        small
+                      >
+                        Status
+                      </v-btn>
+                    </template>
+                    <div class="d-flex flex-column">
+                      <v-btn
+                        v-bind="attrs"
+                        v-on="on"
+                        color="fff"
+                        small
+                        @click="task.newtask = true; task.done = false"
+                      >
+                        To Do
+                      </v-btn>
+                      <v-btn
+                        v-bind="attrs"
+                        v-on="on"
+                        color="fff"
+                        small
+                        @click="task.newtask = false; task.done = false"
+                      >
+                        In Progress
+                      </v-btn>
+                      <v-btn
+                        v-bind="attrs"
+                        v-on="on"
+                        color="fff"
+                        small
+                        @click="task.newtask = false; task.done = true"
+                      >
+                        Complete
+                      </v-btn>
+                    </div>
+                  </v-menu>
+                </div>
+              </template>
             </v-list-item-action>
+
+            <div
+              :class="task.done && 'grey--text' || 'primary--text'"
+              class="ml-4"
+              v-text="task.text"
+            ></div>
 
             <v-spacer></v-spacer>
 
             <v-scroll-x-transition>
               <v-icon
-                v-if="task.done"
+                v-if="task.done && task.newtask == false"
                 color="success"
               >
                 mdi-check
               </v-icon>
             </v-scroll-x-transition>
+
           </v-list-item>
         </template>
       </v-slide-y-transition>
@@ -101,18 +154,26 @@
   export default {
     data: () => ({
       tasks: [
-        /*
         {
+          newtask: true,
           done: false,
           text: 'Foobar',
         },
         {
+          newtask: true,
           done: false,
-          text: 'Fizzbuzz',
+          text: 'Foobar gh',
         },
-        */
+        {
+          newtask: true,
+          done: false,
+          text: 'Foobar kdskfd',
+        },
       ],
       newTask: null,
+      offset: true,
+      statuscolor: '',
+      statuslabel: '',
     }),
 
     computed: {
@@ -125,15 +186,18 @@
       remainingTasks () {
         return this.tasks.length - this.completedTasks
       },
+      inprogress () {
+        return this.tasks.filter(task => task.newtask == false && task.done == false).length
+      },
     },
 
     methods: {
       create () {
         this.tasks.push({
+          newtask: true,
           done: false,
           text: this.newTask,
         })
-
         this.newTask = null
       },
     },
