@@ -410,7 +410,7 @@
             } else {
             this.createStart = this.roundTime(mouse)
             this.createEvent = {
-                name: `Event #${this.events.length}`,
+                name: title /* `Event #${this.events.length}` */,
                 color: this.rndElement(this.colors),
                 start: this.createStart,
                 end: this.createStart,
@@ -514,7 +514,7 @@
             const end = start + secondTimestamp
   
             events.push({
-              name: this.rndElement(this.names),
+              name: title /* `Event #${this.events.length}` */,
               color: this.rndElement(this.colors),
               start,
               end,
@@ -556,7 +556,7 @@
             const second = new Date(first.getTime() + secondTimestamp)
   
             events.push({
-              name: this.names[this.rnd(0, this.names.length - 1)],
+              name: this.names[(0, this.names.length - 1)],
               start: first,
               end: second,
               color: this.colors[this.rnd(0, this.colors.length - 1)],
