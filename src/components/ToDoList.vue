@@ -85,7 +85,6 @@
                       <v-btn
                         v-bind="attrs"
                         v-on="on"
-                        color="primary"
                         dark
                         small
                       >
@@ -98,7 +97,7 @@
                         v-on="on"
                         color="fff"
                         small
-                        @click="task.newtask = true; task.done = false"
+                        @click="task.newtask = true; task.done = false;"
                       >
                         To Do
                       </v-btn>
@@ -172,8 +171,6 @@
       ],
       newTask: null,
       offset: true,
-      statuscolor: '',
-      statuslabel: '',
     }),
 
     computed: {
