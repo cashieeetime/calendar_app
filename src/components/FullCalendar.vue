@@ -123,16 +123,7 @@
               </v-btn>
 
               <!-- TITILE GOES HERE -->
-              <v-toolbar-title> 
-                <v-text-field
-                  label="Title"
-                  standard
-                  clearable
-                  clear-icon="mdi-close-circle"
-                  v-model="title"
-                  @click="label = title"
-                  ></v-text-field>
-              </v-toolbar-title>
+              <v-toolbar-title v-html="selectedEvent.name"> </v-toolbar-title>
               <v-spacer></v-spacer>
               <v-btn icon>
                 <v-icon>mdi-heart</v-icon>
@@ -141,6 +132,7 @@
                 <v-icon>mdi-dots-vertical</v-icon>
               </v-btn>
             </v-toolbar>
+            <v-card-subtitle v-html="selectedEvent.people"> </v-card-subtitle>
             <v-card-text>
               <span v-html="selectedEvent.details"></span>
               <div> <!-- ADD TEXT FIELD HERE -->
@@ -370,6 +362,7 @@
       events: [],
       colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
       names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
+      people: ['Tori Smith', 'James Chester', 'Alison Baker', 'Nolan Edward', 'Erza Fox', 'Leo Maximillian', 'Gideon DeVillers', 'Gwyneth Shepherd'],
       dragEvent: null,
       dragStart: null,
       createEvent: null,
@@ -379,7 +372,6 @@
       StartTimeMenu: false,
       EndDateMenu: false,
       EndTimeMenu: false,
-      title: "",
       StartDate: null,
       StartTime: null,
       EndDate: null,
@@ -408,6 +400,7 @@
           this.createStart = this.roundTime(mouse)
           this.createEvent = {
             name: `Event #${this.events.length}`,
+            people: this.rndElement(this.people),
             color: this.rndElement(this.colors),
             start: this.createStart,
             end: this.createStart,
@@ -512,6 +505,7 @@
 
           events.push({
             name: this.rndElement(this.names),
+            people: this.rndElement(this.people),
             color: this.rndElement(this.colors),
             start,
             end,
@@ -554,6 +548,7 @@
 
           events.push({
             name: this.names[this.rnd(0, this.names.length - 1)],
+            people: this.rndElement(this.people),
             start: first,
             end: second,
             color: this.colors[this.rnd(0, this.colors.length - 1)],
