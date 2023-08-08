@@ -143,7 +143,6 @@
                 mdi-check
               </v-icon>
             </v-scroll-x-transition>
-
           </v-list-item>
         </template>
       </v-slide-y-transition>
@@ -188,25 +187,7 @@
       },
       inprogress () {
         return this.tasks.filter(task => task.newtask == false && task.done == false).length
-      },
-
-      
-      
-
-      /* 
-      determineLabel () {
-        const label = ''
-        if (this.tasks.newtask == true && this.tasks.done == false) {
-          label = 'To Do'
-        } else if (this.tasks.newtask == false && this.tasks.done == false) {
-          label = 'In Progress'
-        } else if (this.tasks.newtask == false && this.tasks.done == true) {
-          label = 'Complete'
-        } else {
-          label = 'Status'
-        }return bgcolor
-      }   */
-    },
+      }},
 
     methods: {
       create () {
@@ -236,14 +217,5 @@
         } else if (task.newtask == false && task.done == true) {
           return btnLabel = 'Complete'
         }
-      },  
-    },
-  }
+      }}}
 </script>
-
-<style>
-.to-do {
-  color: black;
-}
-
-</style>
