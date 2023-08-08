@@ -85,11 +85,10 @@
                       <v-btn
                         v-bind="attrs"
                         v-on="on"
+                        :color="determineColor(task)"
                         dark
                         small
-                      >
-                        Status
-                      </v-btn>
+                      > {{ determineLabel(task) }} </v-btn>
                     </template>
                     <div class="d-flex flex-column">
                       <v-btn
@@ -97,6 +96,7 @@
                         v-on="on"
                         color="fff"
                         small
+                        v-if="!task.newtask"
                         @click="task.newtask = true; task.done = false;"
                       >
                         To Do
@@ -106,6 +106,7 @@
                         v-on="on"
                         color="fff"
                         small
+                        v-if="task.newtask && !task.done || !task.newtask && task.done"
                         @click="task.newtask = false; task.done = false"
                       >
                         In Progress
@@ -115,6 +116,7 @@
                         v-on="on"
                         color="fff"
                         small
+                        v-if="!task.done"
                         @click="task.newtask = false; task.done = true"
                       >
                         Complete
@@ -171,6 +173,7 @@
       ],
       newTask: null,
       offset: true,
+      bgcolor: '',
     }),
 
     computed: {
@@ -186,6 +189,23 @@
       inprogress () {
         return this.tasks.filter(task => task.newtask == false && task.done == false).length
       },
+
+      
+      
+
+      /* 
+      determineLabel () {
+        const label = ''
+        if (this.tasks.newtask == true && this.tasks.done == false) {
+          label = 'To Do'
+        } else if (this.tasks.newtask == false && this.tasks.done == false) {
+          label = 'In Progress'
+        } else if (this.tasks.newtask == false && this.tasks.done == true) {
+          label = 'Complete'
+        } else {
+          label = 'Status'
+        }return bgcolor
+      }   */
     },
 
     methods: {
@@ -197,6 +217,33 @@
         })
         this.newTask = null
       },
+      determineColor (task) {
+        let bgcolor = ''
+        if (task.newtask == true && task.done == false) {
+          return bgcolor = 'black'
+        } else if (task.newtask == false && task.done == false) {
+          return bgcolor = 'primary'
+        } else if (task.newtask == false && task.done == true) {
+          return bgcolor = 'success'
+        }
+      },  
+      determineLabel (task) {
+        let btnLabel = ''
+        if (task.newtask == true && task.done == false) {
+          return btnLabel = 'To Do'
+        } else if (task.newtask == false && task.done == false) {
+          return btnLabel = 'In Progress'
+        } else if (task.newtask == false && task.done == true) {
+          return btnLabel = 'Complete'
+        }
+      },  
     },
   }
 </script>
+
+<style>
+.to-do {
+  color: black;
+}
+
+</style>
