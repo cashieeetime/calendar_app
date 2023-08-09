@@ -15,7 +15,6 @@
                 Today
               </template>
             </template>
-  
             <template v-slot:interval="{ hour }">
               <div
                 class="text-center"

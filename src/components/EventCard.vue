@@ -203,7 +203,6 @@
           StartTimeMenu: false,
           EndDateMenu: false,
           EndTimeMenu: false,
-
           eventData: [
             {
               startdate: null,
@@ -213,7 +212,5 @@
               title: "",
               description: "",
             }
-          ],
-          
-        }}}
+          ]}}}
 </script>
