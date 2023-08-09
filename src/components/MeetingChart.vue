@@ -1,6 +1,6 @@
 <template>
     <Bar
-      id="my-chart-id"
+      id="meeting-counts"
       :options="chartOptions"
       :data="chartData"
     />
@@ -9,24 +9,29 @@
 <script>
 import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+// import FullCalendar from '@/components/FullCalendar.vue'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 export default {
   name: 'BarChart',
-  components: { Bar },
+  components: { 
+    Bar, 
+    // FullCalendar,
+  },
   data() {
     return {
+      people: ['Tori Smith', 'James Chester', 'Alison Baker', 'Nolan Edward', 'Erza Fox', 'Leo Maximillian', 'Gideon DeVillers', 'Gwyneth Shepherd'],
       chartData: {
         labels: [ 'January', 'February', 'March'],
         datasets: [
           {
-            label: 'Data One',
+            label: 'Meeting Counts',
             backgroundColor: '#f87979',
-            data: [40, 20, 12]
+            data: [40, 20, 12],
           }
         ]
-      }
+      },
     }
   }
 }
