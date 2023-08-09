@@ -17,7 +17,6 @@
         </v-fade-transition>
       </template>
     </v-text-field>
-
     <h2 class="text-h4 success--text pl-4">
       Tasks:&nbsp;
       <v-fade-transition leave-absolute>
@@ -26,38 +25,29 @@
         </span>
       </v-fade-transition>
     </h2>
-
     <v-divider class="mt-4"></v-divider>
-
     <v-row
       class="my-1"      
     >
       <strong class="mx-4 text--darken-2">
         To Do: {{ remainingTasks }}
       </strong>
-
       <v-spacer></v-spacer>
       <v-divider vertical></v-divider>
-      
       <strong class="mx-4 info--text text--darken-2">
         In Progress: {{ inprogress }}
       </strong>
-      
       <v-spacer></v-spacer>
       <v-divider vertical></v-divider>
-      
       <strong class="mx-4 success--text text--darken-2">
         Completed: {{ completedTasks }}
       </strong>
-      
       <v-spacer></v-spacer>
-      
       <v-progress-circular
         :value="progress"
         class="mr-2"
       ></v-progress-circular>
     </v-row>
-
     <v-divider class="mb-4"></v-divider>
 
     <v-card v-if="tasks.length > 0">
@@ -132,9 +122,7 @@
               class="ml-4"
               v-text="task.text"
             ></div>
-
             <v-spacer></v-spacer>
-
             <v-scroll-x-transition>
               <v-icon
                 v-if="task.done && task.newtask == false"
@@ -143,6 +131,7 @@
                 mdi-check
               </v-icon>
             </v-scroll-x-transition>
+            
           </v-list-item>
         </template>
       </v-slide-y-transition>
@@ -172,9 +161,7 @@
       ],
       newTask: null,
       offset: true,
-      bgcolor: '',
     }),
-
     computed: {
       completedTasks () {
         return this.tasks.filter(task => task.done).length
@@ -188,7 +175,6 @@
       inprogress () {
         return this.tasks.filter(task => task.newtask == false && task.done == false).length
       }},
-
     methods: {
       create () {
         this.tasks.push({
