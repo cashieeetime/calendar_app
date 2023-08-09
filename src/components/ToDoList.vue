@@ -49,8 +49,12 @@
       ></v-progress-circular>
     </v-row>
     <v-divider class="mb-4"></v-divider>
-
-    <v-card v-if="tasks.length > 0">
+    <v-card 
+      v-if="tasks.length > 0"
+      v-scroll.self="onScroll"
+      class="overflow-y-auto"
+      max-height="460"
+    >
       <v-slide-y-transition
         class="py-0"
         group
@@ -61,7 +65,6 @@
             v-if="i !== 0"
             :key="`${i}-divider`"
           ></v-divider>
-
           <v-list-item :key="`${i}-${task.text}`">
             <v-list-item-action>
               <template>
@@ -88,9 +91,7 @@
                         small
                         v-if="!task.newtask"
                         @click="task.newtask = true; task.done = false;"
-                      >
-                        To Do
-                      </v-btn>
+                      > To Do </v-btn>
                       <v-btn
                         v-bind="attrs"
                         v-on="on"
@@ -98,9 +99,7 @@
                         small
                         v-if="task.newtask && !task.done || !task.newtask && task.done"
                         @click="task.newtask = false; task.done = false"
-                      >
-                        In Progress
-                      </v-btn>
+                      > In Progress </v-btn>
                       <v-btn
                         v-bind="attrs"
                         v-on="on"
@@ -108,15 +107,12 @@
                         small
                         v-if="!task.done"
                         @click="task.newtask = false; task.done = true"
-                      >
-                        Complete
-                      </v-btn>
+                      > Complete </v-btn>
                     </div>
                   </v-menu>
                 </div>
               </template>
             </v-list-item-action>
-
             <div
               :class="task.done && 'grey--text' || 'primary--text'"
               class="ml-4"
@@ -127,11 +123,8 @@
               <v-icon
                 v-if="task.done && task.newtask == false"
                 color="success"
-              >
-                mdi-check
-              </v-icon>
+              > mdi-check </v-icon>
             </v-scroll-x-transition>
-            
           </v-list-item>
         </template>
       </v-slide-y-transition>
@@ -142,25 +135,50 @@
 <script>
   export default {
     data: () => ({
-      tasks: [
-        {
+      tasks: [{
           newtask: true,
           done: false,
-          text: 'Foobar',
-        },
-        {
+          text: 'Example Task 1',
+        }, {
           newtask: true,
           done: false,
-          text: 'Foobar gh',
-        },
-        {
+          text: 'Example Task 2',
+        }, {
           newtask: true,
           done: false,
-          text: 'Foobar kdskfd',
-        },
-      ],
+          text: 'Example Task 3',
+        }, {
+          newtask: false,
+          done: false,
+          text: 'Example Task 4',
+        }, {
+          newtask: false,
+          done: false,
+          text: 'Example Task 5',
+        }, {
+          newtask: false,
+          done: false,
+          text: 'Example Task 6',
+        }, {
+          newtask: false,
+          done: true,
+          text: 'Example Task 7',
+        }, {
+          newtask: false,
+          done: true,
+          text: 'Example Task 8',
+        }, {
+          newtask: false,
+          done: true,
+          text: 'Example Task 9',
+        }, {
+          newtask: false,
+          done: true,
+          text: 'Example Task 10',
+        }],
       newTask: null,
       offset: true,
+      scrollInvoked: 0,
     }),
     computed: {
       completedTasks () {
@@ -192,8 +210,7 @@
           return bgcolor = 'primary'
         } else if (task.newtask == false && task.done == true) {
           return bgcolor = 'success'
-        }
-      },  
+        }},  
       determineLabel (task) {
         let btnLabel = ''
         if (task.newtask == true && task.done == false) {
@@ -202,6 +219,8 @@
           return btnLabel = 'In Progress'
         } else if (task.newtask == false && task.done == true) {
           return btnLabel = 'Complete'
-        }
+        }},
+      onScroll () {
+        this.scrollInvoked++
       }}}
 </script>
