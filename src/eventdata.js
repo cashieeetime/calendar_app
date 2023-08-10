@@ -1,29 +1,31 @@
 class eventData {
-  focus = ''
-  type = 'month'
-  typeToLabel = { month: 'Month', week: 'Week', day: 'Day', '4day': '4 Days',}
-  selectedEvent = {}
-  selectedElement = null
-  selectedOpen = false
-  value = ''
-  events = []
-  colors = ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1']
-  names = ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party']
-  people = ['Tori Smith', 'James Chester', 'Alison Baker', 'Nolan Edward', 'Erza Fox', 'Leo Maximillian', 'Gideon DeVillers', 'Gwyneth Shepherd']
-  dragEvent = null
-  dragStart = null
-  createEvent = null
-  createStart = null
-  extendOriginal = null
-  StartDateMenu = false
-  StartTimeMenu = false
-  EndDateMenu = false
-  EndTimeMenu = false
-  StartDate = null
-  StartTime = null
-  EndDate = null
-  EndTime = null
-  description = ""
+  constructor (focus, type, typeToLabel, selectedEvent, selectedElement, selectedOpen, value, events, colors, names, people, dragEvent, dragStart, createEvent, createStart, extendOriginal, StartDateMenu, StartTimeMenu, EndDateMenu, EndTimeMenu, StartDate, StartTime, EndDate, EndTime) {
+    focus = ''
+    type = 'month'
+    typeToLabel = { month: 'Month', week: 'Week', day: 'Day', '4day': '4 Days',}
+    selectedEvent = {}
+    selectedElement = null
+    selectedOpen = false
+    value = ''
+    events = []
+    colors = ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1']
+    names = ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party']
+    people = ['Tori Smith', 'James Chester', 'Alison Baker', 'Nolan Edward', 'Erza Fox', 'Leo Maximillian', 'Gideon DeVillers', 'Gwyneth Shepherd']
+    dragEvent = null
+    dragStart = null
+    createEvent = null
+    createStart = null
+    extendOriginal = null
+    StartDateMenu = false
+    StartTimeMenu = false
+    EndDateMenu = false
+    EndTimeMenu = false
+    StartDate = null
+    StartTime = null
+    EndDate = null
+    EndTime = null
+    description = ""
+  }
 
   mounted () {
     this.$refs.calendar.checkChange()
@@ -169,3 +171,5 @@ class eventData {
     return arr[this.rnd(0, arr.length - 1)]
   }
 }
+
+export {eventData}
