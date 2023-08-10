@@ -1,12 +1,7 @@
 class eventData {
-  constructor (focus, type, typeToLabel, selectedEvent, selectedElement, selectedOpen, value, events, colors, names, people, dragEvent, dragStart, createEvent, createStart, extendOriginal, StartDateMenu, StartTimeMenu, EndDateMenu, EndTimeMenu, StartDate, StartTime, EndDate, EndTime) {
-    focus = ''
-    type = 'month'
-    typeToLabel = { month: 'Month', week: 'Week', day: 'Day', '4day': '4 Days',}
+  constructor (selectedEvent, selectedElement, events, colors, names, people, dragEvent, dragStart, createEvent, createStart, extendOriginal, StartDate, StartTime, EndDate, EndTime) {
     selectedEvent = {}
     selectedElement = null
-    selectedOpen = false
-    value = ''
     events = []
     colors = ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1']
     names = ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party']
@@ -16,10 +11,6 @@ class eventData {
     createEvent = null
     createStart = null
     extendOriginal = null
-    StartDateMenu = false
-    StartTimeMenu = false
-    EndDateMenu = false
-    EndTimeMenu = false
     StartDate = null
     StartTime = null
     EndDate = null
@@ -27,11 +18,6 @@ class eventData {
     description = ""
   }
 
-  mounted () {
-    this.$refs.calendar.checkChange()
-  }
-
-  // methods
   startDrag ({ event, timed }) {
     if (event && timed) {
       this.dragEvent = event
@@ -41,6 +27,7 @@ class eventData {
   }
   startTime (tms) {
     const mouse = this.toTime(tms)
+
     if (this.dragEvent && this.dragTime === null) {
       const start = this.dragEvent.start
       this.dragTime = mouse - start
@@ -79,8 +66,7 @@ class eventData {
       const max = Math.max(mouseRounded, this.createStart)
       this.createEvent.start = min
       this.createEvent.end = max
-    }
-  }
+    }}
   endDrag () {
     this.dragTime = null
     this.dragEvent = null
@@ -102,45 +88,30 @@ class eventData {
     this.dragTime = null
     this.dragEvent = null
   }
-  roundTime (time, down = true) {
-    const roundTo = 15 // minutes
-    const roundDownTime = roundTo * 60 * 1000
-    return down
-      ? time - time % roundDownTime
-      : time + (roundDownTime - (time % roundDownTime))
-  }
-  toTime (tms) {
-    return new Date(tms.year, tms.month - 1, tms.day, tms.hour, tms.minute).getTime()
-  }
-  viewDay ({ date }) {
-    this.focus = date
-    this.type = 'day'
-  }
   getEventColor (event) {
     return event.color
   }
-  setToday () {
-    this.focus = ''
-  }
-  prev () {
-    this.$refs.calendar.prev()
-  }
-  next () {
-    this.$refs.calendar.next()
-  }
-  showEvent ({ nativeEvent, event }) {
-    const open = () => {
-      this.selectedEvent = event
-      this.selectedElement = nativeEvent.target
-      requestAnimationFrame(() => requestAnimationFrame(() => this.selectedOpen = true))
-    }
-    if (this.selectedOpen) {
-      this.selectedOpen = false
-      requestAnimationFrame(() => requestAnimationFrame(() => open()))
-    } else {
-      open()
-    }
-    nativeEvent.stopPropagation()
+  getEvents ({ start, end }) {
+    const events = []
+    const min = new Date(`${start.date}T00:00:00`).getTime()
+    const max = new Date(`${end.date}T23:59:59`).getTime()
+    const days = (max - min) / 86400000
+    const eventCount = this.rnd(days, days + 20)
+    for (let i = 0; i < eventCount; i++) {
+      const timed = this.rnd(0, 3) !== 0
+      const firstTimestamp = this.rnd(min, max)
+      const secondTimestamp = this.rnd(2, timed ? 8 : 288) * 900000
+      const start = firstTimestamp - (firstTimestamp % 900000)
+      const end = start + secondTimestamp
+      events.push({
+        name: this.rndElement(this.names),
+        people: this.rndElement(this.people),
+        color: this.rndElement(this.colors),
+        start,
+        end,
+        timed,
+      })}
+    this.events = events
   }
   updateRange ({ start, end }) {
     const events = []
@@ -163,12 +134,6 @@ class eventData {
         timed: !allDay,
       })}
     this.events = events
-  }
-  rnd (a, b) {
-    return Math.floor((b - a + 1) * Math.random()) + a
-  }
-  rndElement (arr) {
-    return arr[this.rnd(0, arr.length - 1)]
   }
 }
 
