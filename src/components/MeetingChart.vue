@@ -9,7 +9,7 @@
 <script>
 import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
-// import FullCalendar from '@/components/FullCalendar.vue'
+import {eventData} from '@/eventdata.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
@@ -17,18 +17,42 @@ export default {
   name: 'BarChart',
   components: { 
     Bar, 
-    // FullCalendar,
   },
+  mixins: [eventData],
+  methods: {
+    prepData (allEvents) {
+      for (let key = 0; key < 1; p++); {
+        for (let value = 0; value < allEvents[key], p++;) {
+          if (value in chartData) {
+            allEvents[value] = allEvents[value] + 1 
+          } else {
+            allEvents[value] = 1
+          }
+        }
+      }
+      return allEvents
+    },
+    prepLabels (allEvents) {
+      events = prepData (allEvents)
+      peopleList = []
+      dataList = []
+      for (i = 0; i < allEvents; i++) {
+        peopleList.push(i)
+        dataList.push(allEvents[i])
+      }
+      return peopleList, dataList
+    }
+  },
+  
   data() {
     return {
-      people: ['Tori Smith', 'James Chester', 'Alison Baker', 'Nolan Edward', 'Erza Fox', 'Leo Maximillian', 'Gideon DeVillers', 'Gwyneth Shepherd'],
       chartData: {
-        labels: [ 'January', 'February', 'March'],
+        labels: people,
         datasets: [
           {
-            label: 'Meeting Counts',
+            label: peopleList,
             backgroundColor: '#f87979',
-            data: [40, 20, 12],
+            data: dataList,
           }
         ]
       },
