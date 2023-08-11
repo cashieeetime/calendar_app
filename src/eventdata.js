@@ -23,7 +23,7 @@ export const eventData = {
           timed,
         })
       } 
-      this.allEvents = events
+      allEvents = events
       return allEvents
     },
   },
