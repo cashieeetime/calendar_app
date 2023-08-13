@@ -8,13 +8,6 @@
           <router-link to="/testing">Testing</router-link>
         </nav>
         <router-view/>
-
-        <!-- 
-        <nav-bar>
-            <router-link to="/dashboard">Dashboard</router-link>
-            <router-link to="/calendar">Calendar</router-link>
-        </nav-bar>
-        -->
       </v-main>
     </v-app>
   </div>
@@ -22,16 +15,11 @@
 
 <script>
 // @ is an alias to /src
-// import NavBar from '@/components/NavBar.vue'
-
 export default {
   name: 'App',
-  components: {
-    // NavBar
-  }
+  components: {}
 }
 </script>
-
 
 <style lang="scss">
 #app {
@@ -41,10 +29,8 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
 nav {
   padding: 30px;
-
   a {
     font-weight: bold;
     color: #2c3e50;
@@ -54,7 +40,6 @@ nav {
     }
   }
 }
-
 .navbar {
   position: left;
 }
