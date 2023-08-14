@@ -19,8 +19,8 @@ export default {
     Bar, 
   },
   mixins: [eventData],
-  methods: {
-    prepData (allEvents) {
+  methods: { /*
+    prepRaw (allEvents) {
       for (let key = 0; key < 1; p++); {
         for (let value = 0; value < allEvents[key], p++;) {
           if (value in chartData) {
@@ -35,26 +35,41 @@ export default {
     prepLabels (allEvents) {
       events = prepData (allEvents)
       peopleList = []
-      dataList = []
       for (i = 0; i < allEvents; i++) {
         peopleList.push(i)
+      }
+      return peopleList
+    },
+    prepData (allEvents) {
+      events = prepData (allEvents)
+      dataList = []
+      for (i = 0; i < allEvents; i++) {
         dataList.push(allEvents[i])
       }
-      return peopleList, dataList
-    }
+      return dataList
+    } */
   },
-  
+  created() {
+    console.log(this.getEvents())
+    // this.prepRData
+  },
   data() {
     return {
       chartData: {
-        labels: people,
+        labels: ['Tori Smith', 'James Chester', 'Alison Baker', 'Nolan Edward', 'Leo Maximillian'],
         datasets: [
           {
-            label: peopleList,
+            label: 'Number of Meetings This Week',
             backgroundColor: '#f87979',
-            data: dataList,
+            data: [1, 3, 2, 1, 2],
           }
-        ]
+        ],
+        options: {
+          indexAxis: 'y',
+        }
+
+
+        
       },
     }
   }
