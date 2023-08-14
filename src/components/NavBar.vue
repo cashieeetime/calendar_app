@@ -1,3 +1,5 @@
+<!-- UNUSED CODE -->
+
 <template>
   <v-card
     height="400"
@@ -17,9 +19,7 @@
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
-
       <v-divider></v-divider>
-
       <v-list
         dense
         nav
@@ -32,7 +32,6 @@
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
-
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
@@ -52,7 +51,5 @@
           { title: 'About', icon: 'mdi-help-box' },
         ],
         right: null,
-      }
-    },
-  }
+      } }, }
 </script>

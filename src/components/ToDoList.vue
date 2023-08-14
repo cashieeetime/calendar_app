@@ -1,3 +1,5 @@
+<!-- FINISHED COMPONENT -->
+
 <template>
   <v-container style="max-width: 500px">
     <v-text-field
@@ -222,5 +224,5 @@
         }},
       onScroll () {
         this.scrollInvoked++
-      }}}
+      } } }
 </script>

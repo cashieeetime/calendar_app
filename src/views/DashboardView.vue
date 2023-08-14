@@ -6,7 +6,6 @@
           <to-do-list/>
         </v-container>
       </v-card>
-
       <!--
       <v-card width="950" height="700">
         <v-container>
@@ -15,7 +14,6 @@
       </v-card>
       -->
     </div>
-
     <!--
     <div class="d-flex justify-space-around">
       <v-card width="1300" height="700">
@@ -40,6 +38,5 @@ export default {
     ToDoList,
     // DayView,
     // CompareSchedule
-  }
-}
+  } }
 </script>

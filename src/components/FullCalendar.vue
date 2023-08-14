@@ -1,3 +1,5 @@
+<!-- FINISHED COMPONENT -->
+
 <template>
   <v-row class="fill-height" >
     <v-col>
@@ -10,9 +12,7 @@
             class="mr-4"
             color="grey darken-2"
             @click="setToday"
-          >
-            Today
-          </v-btn>
+          > Today </v-btn>
           <v-btn
             fab
             text
@@ -20,9 +20,7 @@
             color="grey darken-2"
             @click="prev"
           >
-            <v-icon small>
-              mdi-chevron-left
-            </v-icon>
+            <v-icon small> mdi-chevron-left </v-icon>
           </v-btn>
           <v-btn
             fab
@@ -31,13 +29,9 @@
             color="grey darken-2"
             @click="next"
           >
-            <v-icon small>
-              mdi-chevron-right
-            </v-icon>
+            <v-icon small> mdi-chevron-right </v-icon>
           </v-btn>
-          <v-toolbar-title v-if="$refs.calendar">
-            {{ $refs.calendar.title }}
-          </v-toolbar-title>
+          <v-toolbar-title v-if="$refs.calendar">  {{ $refs.calendar.title }}  </v-toolbar-title>
           <v-spacer></v-spacer>
           <v-menu
             bottom
@@ -51,23 +45,21 @@
                 v-on="on"
               >
                 <span>{{ typeToLabel[type] }}</span>
-                <v-icon right>
-                  mdi-menu-down
-                </v-icon>
+                <v-icon right> mdi-menu-down </v-icon>
               </v-btn>
             </template>
             <v-list>
               <v-list-item @click="type = 'day'">
-                <v-list-item-title>Day</v-list-item-title>
+                <v-list-item-title> Day </v-list-item-title>
               </v-list-item>
               <v-list-item @click="type = 'week'">
-                <v-list-item-title>Week</v-list-item-title>
+                <v-list-item-title> Week </v-list-item-title>
               </v-list-item>
               <v-list-item @click="type = 'month'">
-                <v-list-item-title>Month</v-list-item-title>
+                <v-list-item-title> Month </v-list-item-title>
               </v-list-item>
               <v-list-item @click="type = '4day'">
-                <v-list-item-title>4 days</v-list-item-title>
+                <v-list-item-title> 4 days </v-list-item-title>
               </v-list-item>
             </v-list>
           </v-menu>
@@ -91,7 +83,7 @@
           @mousemove:time="mouseMove"
           @mouseup:time="endDrag"
           @mouseleave.native="cancelDrag"
-          >
+        >
           <template v-slot:event="{ event, timed, eventSummary }">
             <div class="v-event-draggable">
               <component :is="{ render: eventSummary }"></component>
@@ -118,44 +110,38 @@
               :color="selectedEvent.color"
               dark
             >
-              <v-btn icon>
-                <v-icon>mdi-pencil</v-icon>
-              </v-btn>
+              <v-btn icon>  <v-icon>mdi-pencil</v-icon>  </v-btn>
               <v-toolbar-title v-html="selectedEvent.name"> </v-toolbar-title>
               <v-spacer></v-spacer>
-              <v-btn icon>
-                <v-icon>mdi-heart</v-icon>
-              </v-btn>
-              <v-btn icon>
-                <v-icon>mdi-dots-vertical</v-icon>
-              </v-btn>
+              <v-btn icon>  <v-icon>mdi-heart</v-icon>  </v-btn>
+              <v-btn icon>  <v-icon>mdi-dots-vertical</v-icon>  </v-btn>
             </v-toolbar>
             <v-card-subtitle v-html="selectedEvent.people"> </v-card-subtitle>
             <v-card-text>
               <span v-html="selectedEvent.details"></span>
               <div> <!-- EVENT INFO MENU -->
                 <v-col
-                cols="10"
-                sm="5"
-                md="12"
+                  cols="10"
+                  sm="5"
+                  md="12"
                 >
                   <v-row>
                   <v-menu
-                  ref="menu"
-                  v-model="StartDateMenu"
-                  :close-on-content-click="false"
-                  :return-value.sync="date"
-                  transition="scale-transition"
-                  offset-y
-                  min-width="auto"
+                    ref="menu"
+                    v-model="StartDateMenu"
+                    :close-on-content-click="false"
+                    :return-value.sync="date"
+                    transition="scale-transition"
+                    offset-y
+                    min-width="auto"
                   >
                     <template v-slot:activator="{ on, attrs }">
                       <v-text-field
-                      label="Start Date"
-                      prepend-icon="mdi-calendar"
-                      readonly
-                      v-bind="attrs"
-                      v-on="on"
+                        label="Start Date"
+                        prepend-icon="mdi-calendar"
+                        readonly
+                        v-bind="attrs"
+                        v-on="on"
                       ></v-text-field>
                     </template>
                     <v-date-picker
@@ -165,19 +151,15 @@
                     >
                       <v-spacer></v-spacer>
                       <v-btn
-                      text
-                      color="primary"
-                      @click="menu = false"
-                      >
-                      Cancel
-                      </v-btn>
+                        text
+                        color="primary"
+                        @click="menu = false"
+                      > Cancel </v-btn>
                       <v-btn
-                      text
-                      color="primary"
-                      @click="$refs.menu.save(date)"
-                      >
-                      OK
-                      </v-btn>
+                        text
+                        color="primary"
+                        @click="$refs.menu.save(date)"
+                      > OK </v-btn>
                     </v-date-picker>
                   </v-menu>
                   <v-menu
@@ -207,39 +189,35 @@
                     >
                       <v-spacer></v-spacer>
                       <v-btn
-                      text
-                      color="primary"
-                      @click="menu = false"
-                      >
-                      Cancel
-                      </v-btn>
+                        text
+                        color="primary"
+                        @click="menu = false"
+                      > Cancel </v-btn>
                       <v-btn
-                      text
-                      color="primary"
-                      @click="$refs.menu.save(date)"
-                      >
-                      OK
-                      </v-btn>
+                        text
+                        color="primary"
+                        @click="$refs.menu.save(date)"
+                      > OK </v-btn>
                     </v-time-picker>
                   </v-menu>
                   </v-row>
                   <v-row>
                   <v-menu
-                  ref="menu"
-                  v-model="EndDateMenu"
-                  :close-on-content-click="false"
-                  :return-value.sync="date"
-                  transition="scale-transition"
-                  offset-y
-                  min-width="auto"
+                    ref="menu"
+                    v-model="EndDateMenu"
+                    :close-on-content-click="false"
+                    :return-value.sync="date"
+                    transition="scale-transition"
+                    offset-y
+                    min-width="auto"
                   >
                     <template v-slot:activator="{ on, attrs }">
                       <v-text-field
-                      label="End Date"
-                      prepend-icon="mdi-calendar"
-                      readonly
-                      v-bind="attrs"
-                      v-on="on"
+                        label="End Date"
+                        prepend-icon="mdi-calendar"
+                        readonly
+                        v-bind="attrs"
+                        v-on="on"
                       ></v-text-field>
                     </template>
                     <v-date-picker
@@ -249,19 +227,15 @@
                     >
                       <v-spacer></v-spacer>
                       <v-btn
-                      text
-                      color="primary"
-                      @click="menu = false"
-                      >
-                      Cancel
-                      </v-btn>
+                        text
+                        color="primary"
+                        @click="menu = false"
+                      > Cancel </v-btn>
                       <v-btn
-                      text
-                      color="primary"
-                      @click="$refs.menu.save(date)"
-                      >
-                      OK
-                      </v-btn>
+                        text
+                        color="primary"
+                        @click="$refs.menu.save(date)"
+                      > OK </v-btn>
                     </v-date-picker>
                   </v-menu>
                   <v-menu
@@ -291,29 +265,25 @@
                     >
                       <v-spacer></v-spacer>
                       <v-btn
-                      text
-                      color="primary"
-                      @click="menu = false"
-                      >
-                      Cancel
-                      </v-btn>
+                        text
+                        color="primary"
+                        @click="menu = false"
+                      > Cancel </v-btn>
                       <v-btn
-                      text
-                      color="primary"
-                      @click="$refs.menu.save(date)"
-                      >
-                      OK
-                      </v-btn>
+                        text
+                        color="primary"
+                        @click="$refs.menu.save(date)"
+                      > OK </v-btn>
                     </v-time-picker>
                   </v-menu>
                   </v-row>
                   <v-textarea
-                  name="input-7-4"
-                  label="Description"
-                  clearable
-                  clear-icon="mdi-close-circle"
-                  auto-grow
-                  v-model="description"
+                    name="input-7-4"
+                    label="Description"
+                    clearable
+                    clear-icon="mdi-close-circle"
+                    auto-grow
+                    v-model="description"
                   ></v-textarea>
               </v-col>
             </div>
@@ -323,16 +293,12 @@
                 text
                 color="secondary"
                 @click="selectedOpen = false"
-              >
-                Cancel
-              </v-btn>
+              > Cancel </v-btn>
               <v-btn
                 text
                 color="primary"
                 @click="$refs.menu.save(date)"
-              >
-                OK
-              </v-btn>
+              > OK </v-btn>
             </v-card-actions>
           </v-card>
         </v-menu>
@@ -343,7 +309,6 @@
 
 <script>
 import {eventData} from '@/eventdata.js'
-
 export default {
   data: () => ({ 
     focus: '',
@@ -352,8 +317,7 @@ export default {
       month: 'Month',
       week: 'Week',
       day: 'Day',
-      '4day': '4 Days',
-    },
+      '4day': '4 Days', },
     selectedEvent: {},
     selectedElement: null,
     selectedOpen: false,
@@ -387,11 +351,9 @@ export default {
         this.dragEvent = event
         this.dragTime = null
         this.extendOriginal = null
-      }
-    },
+      } },
     startTime (tms) {
       const mouse = this.toTime(tms)
-
       if (this.dragEvent && this.dragTime === null) {
         const start = this.dragEvent.start
         this.dragTime = mouse - start
@@ -406,8 +368,7 @@ export default {
           timed: true,
         }
         this.events.push(this.createEvent)
-      }
-    },
+      } },
     extendBottom (event) {
       this.createEvent = event
       this.createStart = event.start
@@ -430,7 +391,7 @@ export default {
         const max = Math.max(mouseRounded, this.createStart)
         this.createEvent.start = min
         this.createEvent.end = max
-      }},
+      } },
     endDrag () {
       this.dragTime = null
       this.dragEvent = null
@@ -446,7 +407,7 @@ export default {
           const i = this.events.indexOf(this.createEvent)
           if (i !== -1) {
             this.events.splice(i, 1)
-          }}}
+          } } }
       this.createEvent = null
       this.createStart = null
       this.dragTime = null
@@ -511,7 +472,7 @@ export default {
           end: second,
           color: this.colors[this.rnd(0, this.colors.length - 1)],
           timed: !allDay,
-        })}
+        } ) }
       this.events = events
     }, 
     rnd (a, b) {
@@ -519,9 +480,7 @@ export default {
     },
     rndElement (arr) {
       return arr[this.rnd(0, arr.length - 1)]
-    }
-  }
-}
+    } } }
 </script>
 
 <style scoped lang="scss">
@@ -553,5 +512,5 @@ export default {
   }
   &:hover::after {
     display: block;
-  }}
+  } }
 </style>
