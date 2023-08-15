@@ -1,9 +1,9 @@
 <template>
-    <Bar
-      id="meeting-counts"
-      :options="chartOptions"
-      :data="chartData"
-    />
+  <Bar
+    id="meeting-counts"
+    :options="chartOptions"
+    :data="chartData"
+  />
 </template>
   
 <script>
@@ -14,17 +14,15 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 export default {
   name: 'BarChart',
-  components: { 
-    Bar, 
-  },
+  components: { Bar },
   data() {
     return {
       chartData: {
         labels: ['Tori S.', 'James C.', 'Alison B.', 'Nolan E.', 'Leo M.', 'Erza F.'],
-        datasets: [
+        datasets: [ 
           {
-            axis: 'y',
             label: 'Number of Meetings This Week',
+            data: [1, 3, 2, 4, 2, 1],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(255, 159, 64, 0.2)',
@@ -42,11 +40,24 @@ export default {
               'rgb(153, 102, 255)'
             ],
             borderWidth: 1,
-            data: [1, 3, 2, 4, 2, 1],
-          }
-        ],
+          } 
+        ] 
       },
-      
+
+      chartOptions: {
+        //indexAxis: 'x',
+        responsive: true,
+        autoPadding: true,
+        scales: {
+          y: {
+            min: 0,
+            max: 5,
+            ticks: {
+              stepSize: 1
+            }
+          },
+        }   
+      }
     }
   }
 }

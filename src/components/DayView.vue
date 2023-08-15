@@ -4,7 +4,7 @@
   <v-container>
     <v-row>
       <v-col>
-        <v-sheet height="650">
+        <v-sheet height="300">
           <v-calendar
             color="primary"
             type="day"
@@ -13,16 +13,12 @@
               <template
                 v-if="present"
                 class="text-center"
-              >
-                Today
-              </template>
+              > Today </template>
             </template>
             <template v-slot:interval="{ hour }">
               <div
                 class="text-center"
-              >
-                {{ hour }} o'clock
-              </div>
+              >  {{ hour }} o'clock  </div>
             </template>
           </v-calendar>
         </v-sheet>
