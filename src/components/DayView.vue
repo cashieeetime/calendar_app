@@ -1,4 +1,4 @@
-<!-- UNUSED CODE -->
+<!-- FINISHED COMPONENT -->
 
 <template>
   <v-container>

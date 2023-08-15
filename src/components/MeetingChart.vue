@@ -1,3 +1,5 @@
+<!-- FINISHED COMPONENT -->
+
 <template>
   <Bar
     id="meeting-counts"
