@@ -312,7 +312,7 @@ import {eventData} from '@/eventdata.js'
 export default {
   data: () => ({ 
     focus: '',
-    type: 'week',
+    type: 'month',
     typeToLabel: {
       month: 'Month',
       week: 'Week',
