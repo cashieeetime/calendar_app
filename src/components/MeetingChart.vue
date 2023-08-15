@@ -47,7 +47,6 @@ export default {
       },
 
       chartOptions: {
-        //indexAxis: 'x',
         responsive: true,
         autoPadding: true,
         scales: {
