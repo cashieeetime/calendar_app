@@ -5,7 +5,7 @@
         <nav>
           <router-link to="/">Dashboard</router-link> | 
           <router-link to="/calendar">Calendar</router-link> | 
-          <router-link to="/testing">Testing</router-link>
+          <!-- <router-link to="/testing">Testing</router-link> -->
         </nav>
         <router-view/>
       </v-main>
