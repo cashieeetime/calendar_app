@@ -13,37 +13,27 @@
           <v-icon
             v-if="newTask"
             @click="create"
-          >
-            mdi-plus-circle
-          </v-icon>
+          > mdi-plus-circle </v-icon>
         </v-fade-transition>
       </template>
     </v-text-field>
     <h2 class="text-h4 success--text pl-4">
       Tasks:&nbsp;
       <v-fade-transition leave-absolute>
-        <span :key="`tasks-${tasks.length}`">
-          {{ tasks.length }}
-        </span>
+        <span :key="`tasks-${tasks.length}`">  {{ tasks.length }}  </span>
       </v-fade-transition>
     </h2>
     <v-divider class="mt-4"></v-divider>
     <v-row
       class="my-1"      
     >
-      <strong class="mx-4 text--darken-2">
-        To Do: {{ remainingTasks }}
-      </strong>
+      <strong class="mx-4 text--darken-2">  To Do: {{ remainingTasks }}  </strong>
       <v-spacer></v-spacer>
       <v-divider vertical></v-divider>
-      <strong class="mx-4 info--text text--darken-2">
-        In Progress: {{ inprogress }}
-      </strong>
+      <strong class="mx-4 info--text text--darken-2">  In Progress: {{ inprogress }}  </strong>
       <v-spacer></v-spacer>
       <v-divider vertical></v-divider>
-      <strong class="mx-4 success--text text--darken-2">
-        Completed: {{ completedTasks }}
-      </strong>
+      <strong class="mx-4 success--text text--darken-2">  Completed: {{ completedTasks }}  </strong>
       <v-spacer></v-spacer>
       <v-progress-circular
         :value="progress"
@@ -190,7 +180,7 @@
         return this.completedTasks / this.tasks.length * 100
       },
       remainingTasks () {
-        return this.tasks.length - this.completedTasks
+        return this.tasks.filter(task => task.newtask == true && task.done == false).length
       },
       inprogress () {
         return this.tasks.filter(task => task.newtask == false && task.done == false).length
