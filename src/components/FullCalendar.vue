@@ -323,7 +323,7 @@ export default {
     selectedOpen: false,
     value: '',
     events: [],
-    colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange'],
+    colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'red', 'pink'],
     names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
     people: ['Tori Smith', 'James Chester', 'Alison Baker', 'Nolan Edward', 'Erza Fox', 'Leo Maximillian', 'Gideon DeVillers', 'Gwyneth Shepherd'],
     dragEvent: null,
